@@ -21,8 +21,8 @@ Before you begin, make sure the following tools are installed:
 ### Clone the repository
 
 \`\`\`bash
-git clone <your_repo_url>
-cd <your_repo>
+git clone https://github.com/vitaly-s1/chat-devops-demo.git
+cd chat-devops-demo
 \`\`\`
 
 ---
