@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-server
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.chatServer.replicaCount }}
+  selector:
+    matchLabels:
+      app: chat-server
+  template:
+    metadata:
+      labels:
+        app: chat-server
+    spec:
+      containers:
+        - name: chat-server
+          image: "{{ .Values.chatServer.image.repository }}:{{ .Values.chatServer.image.tag }}"
+          command: ["/app/run-server.sh"]
+          ports:
+            - containerPort: {{ .Values.chatServer.port }}
