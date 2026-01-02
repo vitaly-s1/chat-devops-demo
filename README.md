@@ -20,26 +20,26 @@ Before you begin, make sure the following tools are installed:
 
 ### Clone the repository
 
-\`\`\`bash
+```bash
 git clone https://github.com/vitaly-s1/chat-devops-demo.git
 cd chat-devops-demo
-\`\`\`
+```
 
 ---
 
 ### Start a Kubernetes cluster with Minikube
 
-\`\`\`bash
+```bash
 minikube start --driver=docker
-\`\`\`
+```
 
 ---
 
 ### Deploy the stack using Helm
 
-\`\`\`bash
+```bash
 helm upgrade --install chat-stack helm/chat-stack -n chat-system --create-namespace
-\`\`\`
+```
 
 This command installs (or upgrades) the entire chat infrastructure into the \`chat-system\` namespace.
 
@@ -49,15 +49,15 @@ This command installs (or upgrades) the entire chat infrastructure into the \`ch
 
 ### Forward the chat server port
 
-\`\`\`bash
+```bash
 kubectl port-forward svc/chat-server 8080:8080 -n chat-system
-\`\`\`
+```
 
 ### Test the metrics endpoint
 
-\`\`\`bash
+```bash
 curl http://localhost:8080/metrics
-\`\`\`
+```
 
 If everything is running correctly, you should see Prometheus‑formatted metrics.
 
@@ -67,16 +67,16 @@ If everything is running correctly, you should see Prometheus‑formatted metric
 
 ### Connect to the server pod
 
-\`\`\`bash
+```bash
 kubectl get pods -n chat-system
 kubectl exec -it <your_server_pod_name> -n chat-system -- bash
-\`\`\`
+```
 
 ### Run the client
 
-\`\`\`bash
+```bash
 ./run-client.sh --server=http://localhost:8080 --list-rooms
-\`\`\`
+```
 
 This command lists available chat rooms via the running server.
 
@@ -86,15 +86,15 @@ This command lists available chat rooms via the running server.
 
 ### Get the Minikube IP
 
-\`\`\`bash
+```bash
 minikube ip
-\`\`\`
+```
 
 Let’s call it:
 
-\`\`\`
+```
 <your_minikube_ip>
-\`\`\`
+```
 
 ---
 
@@ -102,15 +102,15 @@ Let’s call it:
 
 Open in your browser:
 
-\`\`\`
+```
 http://<your_minikube_ip>:30090/
-\`\`\`
+```
 
 To verify that metrics are being collected, run the query:
 
-\`\`\`
+```
 up
-\`\`\`
+```
 
 You should see your chat server listed as \`UP\`.
 
@@ -120,16 +120,16 @@ You should see your chat server listed as \`UP\`.
 
 Open in your browser:
 
-\`\`\`
+```
 http://<your_minikube_ip>:30300/
-\`\`\`
+```
 
 Default credentials:
 
-\`\`\`
+```
 Username: admin
 Password: admin
-\`\`\`
+```
 
 From here, you can:
 
